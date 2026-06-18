@@ -1,0 +1,4 @@
+xor :: [Bool] -> Bool
+xor = foldr (/=) False
+
+main = print (xor [False, True, False])
