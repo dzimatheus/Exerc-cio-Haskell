@@ -1,16 +1,14 @@
 toDigits :: Integer -> [Integer]
-toDigits n
-  | n <= 0    = []
-  | otherwise = toDigits (n `div` 10) ++ [n `mod` 10]
-
+toDigits n | n <= 0 = [] | otherwise = toDigits (n `div` 10) ++ [n `mod` 10]
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther [] = []
-doubleEveryOther [x] = [x]
 doubleEveryOther (x:y:zs) = x : (y * 2) : doubleEveryOther zs
+doubleEveryOther xs = xs
 
 sumDigits :: [Integer] -> Integer
 sumDigits xs = sum (concatMap toDigits xs)
 
 isValid :: Integer -> Bool
 isValid n = (sumDigits (doubleEveryOther (reverse (toDigits n)))) `mod` 10 == 0
+
+main = print (isValid 79927398713)
