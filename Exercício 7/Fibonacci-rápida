@@ -1,0 +1,9 @@
+fibFast :: Int -> Integer
+fibFast n = fibs !! n
+  where
+    fibs = map memoFib [0..]
+    memoFib 0 = 0
+    memoFib 1 = 1
+    memoFib i = fibs !! (i - 1) + fibs !! (i - 2)
+
+main = print (fibFast 100)
