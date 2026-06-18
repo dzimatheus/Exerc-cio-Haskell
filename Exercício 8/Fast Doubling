@@ -1,0 +1,14 @@
+fibFastDoubling :: Integer -> (Integer, Integer)
+fibFastDoubling 0 = (0, 1)
+fibFastDoubling n
+  | even n    = (f2n, f2n_plus_1)
+  | otherwise = (f2n_plus_1, f2n + f2n_plus_1)
+  where
+    (fn, fn_plus_1) = fibFastDoubling (n `div` 2)
+    f2n          = fn * (2 * fn_plus_1 - fn)
+    f2n_plus_1   = fn^2 + fn_plus_1^2
+    
+fibHyperFast :: Integer -> Integer
+fibHyperFast n = fst (fibFastDoubling n)
+
+main = print (fibHyperFast 1000)
