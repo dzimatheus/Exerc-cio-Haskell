@@ -1,5 +1,7 @@
 localMaxima :: Ord a => [a] -> [a]
-localMaxima (x:y:z:zs) | y > x && y > z = y : localMaxima (y:z:zs) | otherwise = localMaxima (y:z:zs)
+localMaxima (x:y:z:zs)
+  | y > x && y > z = y : localMaxima (y:z:zs)
+  | otherwise      = localMaxima (y:z:zs)
 localMaxima _ = []
 
 main = print (localMaxima [2, 9, 5, 6, 1])
